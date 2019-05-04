@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateDistrictTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('districts', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('parent_id')->default(0)->comment('父级id');
+            $table->string('citycode', 20)->default('')->comment('城市编码');
+            $table->string('adcode', 20)->default('')->comment('区域编码,街道没有独有的adcode，均继承父类（区县）的adcode');
+            $table->string('name', 30)->comment('地区名称');
+            $table->string('center', 50)->comment('地区中心');
+            $table->string('level', 20)->comment('地区级别 country:国家,province:省份（直辖市会在province和city显示）,city:市（直辖市会在province和city显示）,district:区县,street:街道');
+            $table->timestamps();
+            $table->index('parent_id');
+            $table->engine = 'MyISAM';
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('district');
+    }
+}

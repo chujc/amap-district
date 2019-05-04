@@ -1,0 +1,25 @@
+{
+    "name": "chujc/amap-district",
+    "description": "高德地图 中国行政区 导入工具与SDK",
+    "keywords": ["china", "district", "amap", "laravel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "john_chu",
+            "email": "john1668@qq.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ChuJC\\AMapDistrict\\DistrictServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "ChuJC\\AMapDistrict\\": "src/"
+        }
+    }
+}
